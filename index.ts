@@ -36,4 +36,4 @@ app.get("/", function (request, response) {
 });
 
 console.log(os.hostname());
-app.listen(os.hostname() == "myfirefly" ? 80 : 8442);
+app.listen(os.hostname() == "myfirefly.me" ? 80 : 8442);
