@@ -13,7 +13,8 @@
 	"dependencies": {
 		"express": "*",
 		"jade": "*",
-		"stylus": "*"
+		"stylus": "*",
+		"nib": "*"
 	},
 	"author": "Luka Horvat",
 	"license": "BSD",
