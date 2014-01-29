@@ -3,9 +3,16 @@
 var os = require("os");
 var express = require("express");
 var stylus = require("stylus"), nib = require("nib");
+var app = express();
+var hgToZip = require("../HgToZip/server.js");
 
 //beginregion Ugly setup stuff
-var app = express();
+app.enable("strict routing");
+
+app.all('/hgtozip', function (req, res) {
+    res.redirect('/hgtozip/');
+});
+app.use("/hgtozip/", hgToZip);
 var compile = function (str, path) {
     return stylus(str).set('filename', path).use(nib());
 };
@@ -30,5 +37,5 @@ app.get("/", function (request, response) {
 });
 
 console.log(os.hostname());
-app.listen(os.hostname() == "myfirefly" ? 80 : 8442);
+app.listen(os.hostname() == "myfirefly.me" ? 80 : 8442);
 
