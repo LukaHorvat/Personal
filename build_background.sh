@@ -1,0 +1,1 @@
+tsc public/background.ts --module "commonjs"

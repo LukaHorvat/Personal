@@ -3,14 +3,4 @@ head
 	link(href="global.css", rel="stylesheet", type="text/css")
 body
 	script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
-	script.
-		var startTime = new Date();
-		var doAnimation = function () {
-			var diff = new Date() - startTime;
-			$("#fixed-img").css("top", 10 * (1 + Math.sin(diff / 2000)) + "px");
-			requestAnimationFrame(doAnimation);
-		};
-		requestAnimationFrame(doAnimation);
-	#background-img
-	#fixed-img
-		img(src="bg.png")
+	script(src="background.js")
