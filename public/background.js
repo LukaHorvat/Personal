@@ -43,9 +43,26 @@ var doAnimation = function (timestamp) {
     //Draw stars
     ctx.strokeStyle = "white";
     ctx.beginPath();
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < starPositions.length * 0.2; i++) {
         drawThinLine(new Vector(starPositions[i].x, starPositions[i].y - 2), new Vector(starPositions[i].x, starPositions[i].y + 2));
         drawThinLine(new Vector(starPositions[i].x - 2, starPositions[i].y), new Vector(starPositions[i].x + 2, starPositions[i].y));
+    }
+    ctx.closePath();
+    ctx.stroke();
+
+    ctx.strokeStyle = "rgb(200, 200, 200)";
+    ctx.beginPath();
+    for (var i = Math.floor(starPositions.length * 0.2); i < starPositions.length * 0.5; i++) {
+        drawThinLine(new Vector(starPositions[i].x, starPositions[i].y - 1), new Vector(starPositions[i].x, starPositions[i].y + 1));
+        drawThinLine(new Vector(starPositions[i].x - 1, starPositions[i].y), new Vector(starPositions[i].x + 1, starPositions[i].y));
+    }
+    ctx.closePath();
+    ctx.stroke();
+
+    ctx.strokeStyle = "rgb(150, 150, 150)";
+    ctx.beginPath();
+    for (var i = Math.floor(starPositions.length * 0.5); i < starPositions.length; i++) {
+        ctx.rect(Math.floor(starPositions[i].x) + 0.5, Math.floor(starPositions[i].y) + 0.5, 1, 1);
     }
     ctx.closePath();
     ctx.stroke();
@@ -164,7 +181,7 @@ $(document).ready(function () {
     canvas.height = height;
     canvas.style.position = "fixed";
 
-    for (var i = 0; i < 100; ++i) {
+    for (var i = 0; i < 200; ++i) {
         var pos = new Vector(Math.random() * width, Math.random() * height - 175);
         starPositions.push(pos);
     }
