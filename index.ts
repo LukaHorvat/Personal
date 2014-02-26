@@ -6,12 +6,20 @@ import express = require("express");
 var	stylus = require("stylus"),
 	nib = require("nib");
 var app = express();
+var httpProxy = require("http-proxy");
 var hgToZip = require("../HgToZip/server.js");
 
 //beginregion Ugly setup stuff
 app.enable("strict routing");
 
-app.all('/hgtozip', function(req, res) { res.redirect('/hgtozip/'); });
+var proxy = httpProxy.createProxyServer();
+app.use(express.vhost("elopakao.myfirefly.me", function (req, res) { 
+	console.log("Redirecting to elopakao: " + req.url);
+	proxy.web(req, res, {
+        "target": "http://myfirefly.me:8442"
+	});
+}));
+app.all('/hgtozip', function (req, res) { res.redirect('/hgtozip/'); });
 app.use("/hgtozip/", hgToZip);
 
 var compile = function (str, path) {

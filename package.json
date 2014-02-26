@@ -14,7 +14,8 @@
 		"express": "*",
 		"jade": "*",
 		"stylus": "*",
-		"nib": "*"
+		"nib": "*",
+		"http-proxy": "*"
 	},
 	"author": "Luka Horvat",
 	"license": "BSD",
